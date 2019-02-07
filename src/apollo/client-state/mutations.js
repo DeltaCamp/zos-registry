@@ -3,6 +3,7 @@ import { getMetamaskPermissions } from '~/web3/getMetamaskPermissions'
 import { ethers } from 'ethers'
 import { poll } from 'ethers/utils/web'
 import { transactionQueries } from '~/queries/transactionQueries'
+import { getWriteProvider } from '~/web3/getWriteProvider'
 
 let nextTxId = 1
 
@@ -13,7 +14,7 @@ export const mutations = {
         try {
           const { contractName, method, args } = variables.txData
           await getMetamaskPermissions()
-          const provider = new ethers.providers.Web3Provider(window.ethereum)
+          const provider = getWriteProvider()
           const network = await provider.getNetwork()
           const signer = provider.getSigner()
           const address = abiMapping.getAddress(contractName, network.chainId)
@@ -68,14 +69,24 @@ export const mutations = {
           cache.writeQuery({ query, data })
 
 
-          const gasLimit = await contract.estimate[method](...args)
-          // Hack to ensure it works!
-          const newGasLimit = gasLimit.add(3000)
-
           const id = `Transaction:${txId}`
           const readTx = () => {
             return cache.readFragment({ fragment: transactionQueries.transactionFragment, id })
           }
+
+          let gasLimit
+          try {
+            gasLimit = await contract.estimate[method](...args)
+          } catch (error) {
+            console.error(error)
+            const transaction = readTx()
+            const data = { ...transaction, error: error.message }
+            cache.writeData({ id, data })
+            return data
+          }
+
+          // Hack to ensure it works!
+          const newGasLimit = gasLimit.add(3000)
 
           const transactionData = contract.interface.functions[method].encode(args)
           const unsignedTransaction = {
@@ -115,7 +126,7 @@ export const mutations = {
               const data = { ...transaction, sent: true, completed: true, error: error.message }
               cache.writeData({ id, data })
             })
-            
+
           return newTx
         } catch (error) {
           console.error('sendTransaction: ', variables, error)

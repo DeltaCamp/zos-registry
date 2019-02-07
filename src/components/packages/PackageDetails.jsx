@@ -97,8 +97,6 @@ export class PackageDetails extends Component {
           </div>
         </div>
 
-        <hr />
-
         <div className='columns'>
           <div className='column'>
             <div className={classnames(
@@ -116,7 +114,7 @@ export class PackageDetails extends Component {
               >
                 {state => (
                   <div className='message-body message--cta has-text-centered slide-exit message-endorse--question'>
-                    <p className='message-body--text has-text-grey'>
+                    <p className='message-body--text'>
                       Would you endorse this package?
                     </p>
                     <button
@@ -127,7 +125,7 @@ export class PackageDetails extends Component {
                     </button>
 
                     <button
-                      className='button is-dark is-pill button-right'
+                      className='button is-pill button-right'
                       onClick={(e) => { this.handleVoteClick('no', metadata.name, id) }}
                     >
                         No
