@@ -68,7 +68,6 @@ export const mutations = {
 
           cache.writeQuery({ query, data })
 
-
           const id = `Transaction:${txId}`
           const readTx = () => {
             return cache.readFragment({ fragment: transactionQueries.transactionFragment, id })

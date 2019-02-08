@@ -1,6 +1,6 @@
 import { ethers } from 'ethers'
 
-async function createProviderFromWeb3(injectedWeb3) {
+async function createProviderFromWeb3 (injectedWeb3) {
   let provider = new ethers.providers.Web3Provider(injectedWeb3)
   const network = await provider.getNetwork()
   if (network.name !== 'unknown') {

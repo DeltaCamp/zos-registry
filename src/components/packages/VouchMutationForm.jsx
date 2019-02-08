@@ -50,7 +50,7 @@ export const VouchMutationForm = graphql(Web3Mutations.sendTransaction, { name: 
           this.textInputRef = React.createRef()
           const vouchTx = props.vouchTx
           this.state = {
-            defaultAmount: vouchTx ? vouchTx.args.values[1].toString() : null,
+            defaultAmount: vouchTx ? vouchTx.args.values[1].toString() : null
           }
         }
 
@@ -152,11 +152,11 @@ export const VouchMutationForm = graphql(Web3Mutations.sendTransaction, { name: 
           return this.needsWeb3() && !this.hasUncompletedTransaction()
         }
 
-        isDanger() {
+        isDanger () {
           return this.state.amountError || this.vouchingTxError() || this.notEnoughZepError() || this.notLoggedIn()
         }
 
-        isSuccess() {
+        isSuccess () {
           return this.vouchingTxCompleted() && !this.vouchingTxError()
         }
 
