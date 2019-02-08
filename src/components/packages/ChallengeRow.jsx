@@ -63,7 +63,7 @@ export const ChallengeRow = class extends Component {
     this.setState({ challengeDetailsActive: !this.state.challengeDetailsActive })
   }
 
-  render() {
+  render () {
     const { challenged } = this.props
     const challengeId = challenged.parsedLog.values.challengeID
     const amount = ethers.utils.bigNumberify(challenged.parsedLog.values.amount.toString())
@@ -71,7 +71,6 @@ export const ChallengeRow = class extends Component {
     const { repo } = gh(metadataURI)
 
     const priority = this.displayPriority(amount)
-
 
     return (
       <Query query={challengeRowQuery} variables={{ uri: metadataURI, challengeId }}>

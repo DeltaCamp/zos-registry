@@ -42,7 +42,7 @@ export const CodeSnippet = ReactTimeout(class _CodeSnippet extends PureComponent
 
         <span className='has-text-right is-inline-block is-copy-button'>
           <div ref='foo' data-tip='Copied to Clipboard' />
-          
+
           <ReactTooltip />
 
           <CopyToClipboard
