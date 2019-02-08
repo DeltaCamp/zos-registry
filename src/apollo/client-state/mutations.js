@@ -34,13 +34,9 @@ export const mutations = {
 
           try {
             data = cache.readQuery({ query })
-            // console.log('existing data', data)
           } catch (error) {
             console.error(error)
           }
-
-          // const newArgs = Array.from(args)
-          // newArgs.__typename = 'JSON'
 
           const newArgs = {
             values: Array.from(args).map(arg => arg.toString()),
