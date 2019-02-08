@@ -89,11 +89,7 @@ export const ChallengeRow = class extends Component {
 
           const timestampDate = new Date(0)
           timestampDate.setUTCSeconds(challenge.createdAt.toString())
-          // const date = format(timestampDate, 'MMM Do, YYYY')
-          // const time = format(timestampDate, 'H:mm:ss')
           const dateRelative = formatRelative(timestampDate, new Date())
-
-          // console.log(challenge, appeal, status, statusLabel, priorityColor, data)
 
           const hasAnswer = parseInt(challenge.answeredAt, 10) > 0
           const hasAppeal = parseInt(appeal.createdAt, 10) > 0

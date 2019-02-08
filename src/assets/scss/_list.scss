@@ -83,26 +83,15 @@
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-// .list--row * {
-//   color: #999;
-// }
-
 .list--row.is-active *,
 .list--row:hover,
 .list--row:hover .list__wrapping-anchor {
   background-color: darken($white-bis, 1%);
-  // color: #444;
-  // font-weight: 500;
   transition: all 600ms ease-out;
 }
 
-// .list--row.is-active * {
-//   color: #000 !important;
-// }
-
 .list--row.list--row__blank-state:hover,
 .list--row.list--row__head:hover {
-  // font-weight: 400;
   background-color: transparent;
 }
 
