@@ -5,6 +5,7 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import { MetaTags } from '~/components/MetaTags'
+import { FooterContainer } from '~/components/layout/Footer'
 import { PackageListPage } from '~/components/pages/PackageListPage'
 import { NavContainer } from '~/components/layout/Nav'
 import { OtherPageContainer } from '~/components/pages/OtherPage'
@@ -38,6 +39,7 @@ const App = class _App extends PureComponent {
     return (
       <>
         <MetaTags {...this.props} cssClass={this.currentPage()} />
+
         <NavContainer />
 
         <TransitionGroup>

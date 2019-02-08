@@ -107,7 +107,6 @@ export class PackageItemPage extends PureComponent {
           </div>
         </div>
 
-        <FooterContainer />
       </div>
     )
   }
