@@ -113,7 +113,6 @@
 
 
 
-// no IE support!
 $grid_gutter: 20px;
 
 $screen_viewport_xs: 0px;
@@ -133,13 +132,13 @@ $grid_arr: (
 
 .row {
   display: grid;
-  min-height: 100%;
+  // min-height: 100%;
   grid-template-columns: repeat(12, 1fr);
   grid-gap: $grid_gutter;
   width: 100%;
 }
 
-@each $label, $breakpoint, $width in $grid_arr {
+@each $label, $breakpoint in $grid_arr {
   @media (min-width: calc(#{$breakpoint} + calc(#{$grid_gutter} * 2))) {
     @for $i from 1 through 12 {
       @for $y from 1 through 12 {
@@ -153,6 +152,7 @@ $grid_arr: (
       // as in bootstrap
       .col-#{$label}-#{$i} {
         grid-column-start: span #{$i};
+        width: 100%;
       }
     }
 
@@ -174,7 +174,7 @@ $grid_arr: (
 .container {
   margin: 0 auto;
 
-  @media (min-width: 0px) and (max-width: $screen_viewport_sm) {
+  @media (min-width: 0px) and (max-width: $screen_viewport_sm + (2 * $gap)) {
     width: 90%;
   }
 }

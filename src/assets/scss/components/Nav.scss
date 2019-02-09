@@ -61,7 +61,7 @@
   opacity: 0.75;
   width: 90px;
 
-  @media screen and (max-width: $mobile) {
+  @media screen and (max-width: 460px) {
     display: none;
   }
 }

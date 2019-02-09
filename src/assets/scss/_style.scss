@@ -119,7 +119,7 @@ a.button.is-text:hover {
   border: 0;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: $tablet) {
   .reverse-column-order {
     display: flex;
     flex-direction: column-reverse;
