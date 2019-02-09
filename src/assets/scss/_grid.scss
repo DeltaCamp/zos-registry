@@ -117,10 +117,10 @@
 $grid_gutter: 20px;
 
 $screen_viewport_xs: 0px;
-$screen_viewport_sm: 500px;
-$screen_viewport_md: 768px;
-$screen_viewport_lg: 820px;
-$screen_viewport_xl: 910px;
+$screen_viewport_sm: $mobile;
+$screen_viewport_md: $tablet;
+$screen_viewport_lg: $desktop;
+$screen_viewport_xl: $widescreen;
 
 // Grid array (used for generating the grid)
 $grid_arr: (
@@ -140,7 +140,7 @@ $grid_arr: (
 }
 
 @each $label, $breakpoint, $width in $grid_arr {
-  @media (min-width: #{$breakpoint}) {
+  @media (min-width: calc(#{$breakpoint} + calc(#{$grid_gutter} * 2))) {
     @for $i from 1 through 12 {
       @for $y from 1 through 12 {
         // Differs from bootstrap from the point that it specifies the index of a column to start
@@ -165,7 +165,7 @@ $grid_arr: (
       width: calc(#{$breakpoint} - #{$grid_gutter});
 
       @media (min-width: 0px) and (max-width: $screen_viewport_sm) {
-        width: 100%;
+        width: 90%;
       }
     }
   }
@@ -175,7 +175,7 @@ $grid_arr: (
   margin: 0 auto;
 
   @media (min-width: 0px) and (max-width: $screen_viewport_sm) {
-    width: 100%;
+    width: 90%;
   }
 }
 
@@ -186,7 +186,7 @@ $grid_arr: (
 }
 
 div[class*='col-'] {
-  min-height: 50px;
+  // min-height: 50px;
   // background:red;
   // color: black;
 }

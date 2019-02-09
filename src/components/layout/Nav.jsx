@@ -34,15 +34,17 @@ export const Nav = class _Nav extends Component {
         <nav className={`navbar ${navColor}`}>
           <div className='container'>
             <div className='row'>
-              <div className='navbar-brand col-xs-12 col-md-8'>
-                <Link to={routes.HOME} className='navbar-item no-margin-right'>
+              <div className='navbar-brand col-xs-8 col-md-8'>
+                <Link to={routes.HOME} className='navbar-item'>
                   <ZeppelinOSRegistryLogo />
                 </Link>
 
                 <a href='https://zeppelin.solutions/' className='navbar-item'>
                   <ZeppelinLogo className='navbar-brand__tertiary-logo' />
                 </a>
+              </div>
 
+              <div className='col-md-4 is-hidden-tablet has-text-right'>
                 <button
                   className={classnames(
                     'burger',
@@ -58,6 +60,7 @@ export const Nav = class _Nav extends Component {
 
               <div id='navbar-menu' className={classnames(
                 'navbar-menu',
+                'col-xs-4',
                 'col-md-4',
                 { 'is-active': this.state.mobileNavActive }
               )}>

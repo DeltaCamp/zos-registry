@@ -18,17 +18,17 @@ export class PackageItemPage extends PureComponent {
 
   render () {
     return (
-      <div className='is-positioned-absolutely is-full-width'>
+      <div className='is-positioned-absolutely'>
         <Helmet
           title='EVM Package'
         />
 
         <ScrollToTop />
 
-        <section className='section'>
+        <section className='section section--main-content'>
           <div className='container'>
-            <div className='columns'>
-              <div className='column main-content--column is-10-tablet is-8-widescreen is-offset-2-widescreen is-8-fullhd is-offset-2-fullhd'>
+            <div className='row'>
+              <div className='col-xs-12'>
                 <p className='content'>
                   <Link
                     to={routes.HOME}
@@ -107,6 +107,7 @@ export class PackageItemPage extends PureComponent {
           </div>
         </div>
 
+        <FooterContainer />
       </div>
     )
   }

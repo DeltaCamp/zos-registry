@@ -1,8 +1,21 @@
+$gap: 64px;
+$mobile: 500px;
+$tablet: 668px;
+$desktop: 820px + (2 * $gap);
+$widescreen: 910px + (2 * $gap);
+$fullhd: 910px + (2 * $gap);
+
+// $screen_viewport_sm: 500px;
+// $screen_viewport_md: 668px;
+// $screen_viewport_lg: 820px;
+// $screen_viewport_xl: 910px;
+
 // Static variables
 $body-line-height: 1.5;
 $body-size: 16px;
 
 $navbar-height: 4rem;
+$navbar-breakpoint: $tablet;
 
 $size-1: 2.2rem;
 $size-2: 1.8rem;

@@ -5,10 +5,8 @@ import { Route, Switch, withRouter } from 'react-router-dom'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 import { MetaTags } from '~/components/MetaTags'
-import { FooterContainer } from '~/components/layout/Footer'
 import { PackageListPage } from '~/components/pages/PackageListPage'
 import { NavContainer } from '~/components/layout/Nav'
-import { OtherPageContainer } from '~/components/pages/OtherPage'
 import { PackageItemPage } from '~/components/pages/PackageItemPage'
 import { FourOhFour } from '~/components/pages/FourOhFour'
 import { getPurePathname } from '~/utils/getPurePathname'
@@ -51,7 +49,6 @@ const App = class _App extends PureComponent {
           >
             <Switch location={this.props.location}>
               <Route path={routes.PACKAGE_ITEM} component={PackageItemPage} />
-              <Route path={routes.OTHER_PAGE} component={OtherPageContainer} />
               <Route exact path={routes.HOME} component={PackageListPage} />
               <Route exact path={routes.HOME_RESEARCHERS_LIST} component={PackageListPage} />
 
