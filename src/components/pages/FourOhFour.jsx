@@ -29,15 +29,12 @@ export const FourOhFour = class _FourOhFour extends PureComponent {
                 <br />
 
                 <h2 className='is-size-2'>
-                  We couldn't find that!
+                  Couldn't find that ...
                 </h2>
                 <br />
                 <h4 className='is-size-4'>
-                  There is no content here:
+                  Nothing lives at {this.props.location.pathname}
                 </h4>
-                <h5 className='is-size-5'>
-                  <em>"{this.props.location.pathname}"</em>
-                </h5>
 
                 <br />
 
