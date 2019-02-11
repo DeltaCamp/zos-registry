@@ -20,6 +20,9 @@ export const web3Resolvers = {
           let provider
           try {
             provider = await getWriteProvider()
+          } catch (e) {}
+          if (!provider) { return null }
+          try {
             const signer = provider.getSigner()
             const address = await signer.getAddress()
             return address
