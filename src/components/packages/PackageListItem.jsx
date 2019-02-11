@@ -17,6 +17,7 @@ import { PackageListItemLoader } from '~/components/packages/PackageListItemLoad
 import { vouchingQueries } from '~/queries/vouchingQueries'
 import { displayWeiToEther } from '~/utils/displayWeiToEther'
 import ZepTokenLogo from '~/assets/images/zep-token-logo--fixed.svg'
+import { ShortText } from '~/components/ShortText'
 import * as routes from '~/../config/routes'
 
 export const PackageListItem = ReactTimeout(class _PackageListItem extends PureComponent {
@@ -147,8 +148,8 @@ export const PackageListItem = ReactTimeout(class _PackageListItem extends PureC
                       </span>
                     </h4>
 
-                    <p className='is-size-6 description is-inline-grid-bottom has-text-grey block-with-text'>
-                      {description}
+                    <p className='is-size-6 description is-inline-grid-bottom has-text-grey'>
+                      <ShortText text={description} maxLength={280} />
                     </p>
                   </Link>
                 </span>
