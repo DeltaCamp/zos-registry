@@ -29,8 +29,6 @@ export const web3Resolvers = {
           } catch (err) {
             if (err.message.indexOf('unknown account') === -1) {
               console.error(`Error in web3Resolvers#account: ${err}`)
-            } else {
-              console.error(err)
             }
             return null
           }
