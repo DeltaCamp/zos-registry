@@ -4,16 +4,19 @@ import { normalizeAddr } from '~/utils/normalizeAddr'
 export function projectResearcherVouchedPackages (address, events) {
   let currentVouchTotal
 
+  address = normalizeAddr(address)
+
   const result = {
     packages: {}
   }
+  
 
   for (let i in events) {
     // use extraTopics to filter events based on user's eth address!
     const event = events[i]
-    let { name, values } = event.parsedLog || {}
-    let { id, amount, sender } = values || {}
-    let addr = normalizeAddr(sender)
+    const { name, values } = event.parsedLog || {}
+    const { id, amount, sender } = values || {}
+    const addr = normalizeAddr(sender)
 
     // skip
     if (addr !== address) { continue }
@@ -37,7 +40,7 @@ export function projectResearcherVouchedPackages (address, events) {
         result.packages[id].vouchTotals[addr] = currentVouchTotal.sub(ethers.utils.bigNumberify(amount))
 
         if (result.packages[id].vouchTotals[addr].eq(ethers.utils.bigNumberify(0))) {
-          delete result.packages[id].vouchTotals[addr]
+          delete result.packages[id]
         }
 
         break
