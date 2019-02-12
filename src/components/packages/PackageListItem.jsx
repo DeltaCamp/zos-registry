@@ -102,6 +102,7 @@ export const PackageListItem = ReactTimeout(class _PackageListItem extends PureC
             )
 
             return (
+              <div className='list-item-container'>
               <div className={classnames('list-item', { 'has-next-release-features': yn(process.env.REACT_APP_NEXT_RELEASE_FEATURE_FLAG) })}>
                 {yn(process.env.REACT_APP_NEXT_RELEASE_FEATURE_FLAG) && (
                   <span
@@ -240,6 +241,7 @@ export const PackageListItem = ReactTimeout(class _PackageListItem extends PureC
                   </Link>
                 </span>
 
+              </div>
               </div>
             )
           }
