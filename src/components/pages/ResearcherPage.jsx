@@ -52,7 +52,7 @@ export class ResearcherPage extends PureComponent {
                 <p className='content'>
                   <Link
                     to={routes.HOME_RESEARCHERS_LIST}
-                    className='button is-monospaced is-text has-text-weight-bold package-page--back-button'
+                    className='button is-monospaced is-text has-text-weight-bold back-button has-underline-border'
                   >
                     {'<'} Back to Researchers
                   </Link>

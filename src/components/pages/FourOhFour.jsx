@@ -21,11 +21,12 @@ export const FourOhFour = class _FourOhFour extends PureComponent {
               <div className='col-xs-12'>
                 <Link
                   to={routes.HOME}
-                  className='button is-monospaced is-text has-text-weight-bold package-page--back-button'
+                  className='button is-monospaced is-text has-text-weight-bold back-button has-underline-border'
                 >
                   {'<'} Back to Home
                 </Link>
-                <hr />
+                
+                <br />
                 <br />
 
                 <h2 className='is-size-2'>

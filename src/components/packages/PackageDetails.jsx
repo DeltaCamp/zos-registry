@@ -63,6 +63,7 @@ export class PackageDetails extends Component {
             <h6 className='is-size-6 has-text-weight-semibold package-item--maintained-by'>
               Maintained by <EtherscanAddressLink
                 address={values.owner}
+                className='has-hover-border'
               >
                 <EnsName address={values.owner} shorten />
               </EtherscanAddressLink>
