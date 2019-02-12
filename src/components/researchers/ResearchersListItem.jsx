@@ -74,7 +74,6 @@ export const ResearchersListItem = ReactTimeout(class _ResearchersListItem exten
             </Link>
           </span>
 
-
           <span className={`
             ${animatingCssClassNames}
             list-item__cell
