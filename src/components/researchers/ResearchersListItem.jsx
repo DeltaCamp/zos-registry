@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import { formatRoute } from 'react-router-named-routes'
 import { Redirect, Link } from 'react-router-dom'
+import { EnsName } from '~/components/EnsName'
 import { displayWeiToEther } from '~/utils/displayWeiToEther'
 import ZepTokenLogo from '~/assets/images/zep-token-logo--fixed.svg'
 import * as routes from '~/../config/routes'
@@ -86,7 +87,7 @@ export const ResearchersListItem = ReactTimeout(class _ResearchersListItem exten
             className='no-select'
           >
             <h5 className='title is-size-5 is-monospaced has-text-link'>
-              {this.props.researcher.address}
+              <EnsName address={this.props.researcher.address} />
             </h5>
           </Link>
         </span>
