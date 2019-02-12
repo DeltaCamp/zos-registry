@@ -1,23 +1,16 @@
 $grid_gutter: $gap;
-//  + calc(#{$grid_gutter} * 2
-$screen_viewport_xs: 0px;
-$screen_viewport_sm: $mobile;
-$screen_viewport_md: $tablet;
-$screen_viewport_lg: $desktop;
-$screen_viewport_xl: $widescreen;
 
 // Grid array (used for generating the grid)
 $grid_arr: (
-  (xs, $screen_viewport_xs), 
-  (sm, $screen_viewport_sm), 
-  (md, $screen_viewport_md), 
-  (lg, $screen_viewport_lg), 
-  (xl, $screen_viewport_xl)
+  (xs, 0px), 
+  (sm, $mobile), 
+  (md, $tablet), 
+  (lg, $desktop), 
+  (xl, $widescreen)
 );
 
 .row {
   display: grid;
-  // min-height: 100%;
   grid-template-columns: repeat(12, 1fr);
   grid-gap: $grid_gutter;
   width: 100%;
@@ -49,33 +42,36 @@ $grid_arr: (
     .navbar > .container {
       width: calc(#{$breakpoint} - #{$grid_gutter});
 
-      @media (min-width: 0px) and (max-width: $screen_viewport_sm) {
+      @media (min-width: 0px) and (max-width: $tablet) {
+        // width: 100%;
         width: 90%;
       }
     }
+
+    // .navbar > .container > .row {
+    //   @media (min-width: 0px) and (max-width: $mobile) {
+    //     padding-left: 5%;
+    //     padding-right: 5%;
+    //   }
+    // }
   }
 }
 
 .container {
   margin: 0 auto;
 
-  @media (min-width: 0px) and (max-width: $screen_viewport_md) {
+  @media (max-width: $tablet) {
     width: 90%;
   }
 }
 
 .row {
-  // background: black;
-  // color: red;
-  // margin-bottom: 10px;
-
-  @media (min-width: 0px) and (max-width: $screen_viewport_md) {
+  @media (max-width: $tablet) {
+    grid-row-gap: $grid_gutter / 2;
     grid-column-gap: 0;
-  }
-}
+    // margin-left: $grid_gutter / 2;
+    // margin-right: $grid_gutter / 2;
+    // grid-column-gap: 0;
 
-div[class*='col-'] {
-  // min-height: 50px;
-  // background:red;
-  // color: black;
+  }
 }

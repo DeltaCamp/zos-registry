@@ -44,7 +44,7 @@ export const Nav = class _Nav extends Component {
                 </a>
               </div>
 
-              <div className='col-md-4 is-hidden-tablet has-text-right'>
+              <div className='col-xs-4 is-hidden-tablet has-text-right'>
                 <button
                   className={classnames(
                     'burger',

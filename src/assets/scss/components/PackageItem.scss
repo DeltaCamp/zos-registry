@@ -22,10 +22,6 @@
   position: relative;
   padding: 0;
   top: 0.25rem;
-
-  @media screen and (min-width: $tablet) {
-    margin-top: 0.06rem;
-  }
 }
 
 .package-item--github-icon:hover {

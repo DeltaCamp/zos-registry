@@ -20,7 +20,7 @@ a.has-text-primary:focus {
 .column {
   // padding-left: 1rem;
   // padding-right: 1rem;
-  @media screen and (max-width: $desktop - 1px) {
+  @media screen and (max-width: $desktop) {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
     // padding-left: 1rem;
@@ -29,14 +29,14 @@ a.has-text-primary:focus {
 }
 
 .column .column {
-  @media screen and (max-width: $desktop - 1px) {
+  @media screen and (max-width: $desktop) {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
 }
 
 .columns {
-  @media screen and (max-width: $desktop - 1px) {
+  @media screen and (max-width: $desktop) {
     margin-left: 0;
     margin-right: 0;
   }
@@ -116,13 +116,13 @@ a.is-dark {
 }
 
 .has-text-right--desktop {
-  @media screen and (min-width: $tablet) {
+  @media screen and (min-width: $desktopMin) {
     text-align: right;
   }
 }
 
 .is-size-4 {
-  @media screen and (max-width: $desktop - 1px) {
+  @media screen and (max-width: $desktop) {
     font-size: 1.25rem !important;
     line-height: 1.325;
   }

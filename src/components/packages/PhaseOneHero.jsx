@@ -7,7 +7,7 @@ export const PhaseOneHero = ({ heroColor }) => {
       <div className='hero-body'>
         <div className='container'>
           <div className='row'>
-            <div className='col-xs-12 col-md-6'>
+            <div className='col-xs-12 col-lg-6'>
               <p className='is-size-5'>
                 Introducing EVM packages: the most trusted on-chain libraries.
               </p>
@@ -15,7 +15,7 @@ export const PhaseOneHero = ({ heroColor }) => {
                 EVM packages are reusable on-chain smart contract libraries, vetted by the open source community.
               </p>
             </div>
-            <div className='col-xs-12 col-md-4 col-start-md-9'>
+            <div className='col-xs-12 col-lg-5 col-start-lg-8'>
               <CodeBox />
               <p>
                 <a href='https://docs.zeppelinos.org' target='_blank' rel='noopener noreferrer'>See EVM Package Docs &gt;</a>
