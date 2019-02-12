@@ -43,18 +43,6 @@ a.has-text-primary:focus {
 }
 // END Bulma mobile fixes
 
-a.button,
-button {
-  transition: all 150ms ease-out;
-  transform: scale3d(1, 1, 1);
-}
-
-a.button:hover:not(.is-text),
-button:hover:not(.is-text) {
-  transition: transform 150ms ease-in;
-  transform: scale3d(1.04, 1.04, 1.04);
-}
-
 a.is-dark {
   color: $text;
 }
@@ -81,7 +69,7 @@ a.is-dark {
 }
 
 .section--main-content {
-  min-height: 500px;
+  min-height: 600px;
 }
 
 // This is used by the page / layout transitions
@@ -109,10 +97,6 @@ a.is-dark {
 
 .has-hover-border:hover {
   border-bottom-color: rgba(5, 110, 220, 0.5);
-}
-
-a.button.is-text:hover {
-  border-bottom-color: $button-text-hover-color;
 }
 
 .button-has-icon {

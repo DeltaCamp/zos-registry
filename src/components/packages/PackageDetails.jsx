@@ -51,7 +51,7 @@ export class PackageDetails extends Component {
     return (
       <>
         <div className='row reverse-column-order'>
-          <div className='col-xs-12 col-md-5'>
+          <div className='col-xs-12 col-md-7'>
             <h1 className='title is-size-1 has-text-weight-normal'>
               {metadata.name}
 

@@ -1,6 +1,7 @@
+// $gap: 64px;
 $gap: 64px;
-$mobile: 500px;
-$tablet: 668px;
+$mobile: 500px + (2 * $gap);
+$tablet: 668px + (2 * $gap);
 $desktop: 820px + (2 * $gap);
 $widescreen: 910px + (2 * $gap);
 $fullhd: 910px + (2 * $gap);

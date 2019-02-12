@@ -51,15 +51,20 @@
   }
 }
 
-.navbar-end .navbar-item a {
-  // border-bottom: 1px solid transparent;
+.navbar-end .navbar-item {
+  border-bottom: 1px solid transparent;
   margin-right: 0.5rem;
-  // padding: 0.25rem 0.1rem;
-  // transition: border 300ms ease-in-out;
+  padding: 0 0.1rem;
+  margin: 1rem 0;
+  transition: border 300ms ease-in-out;
 
   // @media screen and (max-width: 970px) {
     // padding: 0.25rem 0.75rem;
   // }
+}
+
+.navbar-end .navbar-item:hover {
+  border-bottom: 1px solid white;
 }
 
 .navbar-brand svg.navbar-brand__tertiary-logo {

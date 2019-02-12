@@ -140,3 +140,19 @@ button[disabled]:active {
     margin-right: auto;
   }
 }
+
+a.button,
+button {
+  transition: all 150ms ease-out;
+  transform: scale3d(1, 1, 1);
+}
+
+a.button:hover:not(.is-text),
+button:hover:not(.is-text) {
+  transition: transform 150ms ease-in;
+  transform: scale3d(1.04, 1.04, 1.04);
+}
+
+a.button.is-text.has-underline-border:hover {
+  border-bottom-color: $button-text-hover-color;
+}

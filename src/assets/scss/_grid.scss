@@ -1,5 +1,5 @@
-$grid_gutter: 20px;
-
+$grid_gutter: $gap;
+//  + calc(#{$grid_gutter} * 2
 $screen_viewport_xs: 0px;
 $screen_viewport_sm: $mobile;
 $screen_viewport_md: $tablet;
@@ -24,7 +24,7 @@ $grid_arr: (
 }
 
 @each $label, $breakpoint in $grid_arr {
-  @media (min-width: calc(#{$breakpoint} + calc(#{$grid_gutter} * 2))) {
+  @media (min-width: #{$breakpoint}) {
     @for $i from 1 through 12 {
       @for $y from 1 through 12 {
         // Differs from bootstrap from the point that it specifies the index of a column to start
@@ -59,7 +59,7 @@ $grid_arr: (
 .container {
   margin: 0 auto;
 
-  @media (min-width: 0px) and (max-width: $screen_viewport_sm + (2 * $gap)) {
+  @media (min-width: 0px) and (max-width: $screen_viewport_md) {
     width: 90%;
   }
 }
@@ -68,6 +68,10 @@ $grid_arr: (
   // background: black;
   // color: red;
   // margin-bottom: 10px;
+
+  @media (min-width: 0px) and (max-width: $screen_viewport_md) {
+    grid-column-gap: 0;
+  }
 }
 
 div[class*='col-'] {
