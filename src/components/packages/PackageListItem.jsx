@@ -157,7 +157,7 @@ export const PackageListItem = ReactTimeout(class _PackageListItem extends PureC
                     </Link>
                   </span>
 
-                {/*
+                  {/*
                 <CodeSnippet metadata={metadata || {}} />
 
                 <button
