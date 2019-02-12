@@ -51,8 +51,15 @@
   }
 }
 
-.navbar-brand .navbar-item {
+.navbar-end .navbar-item a {
+  // border-bottom: 1px solid transparent;
   margin-right: 0.5rem;
+  // padding: 0.25rem 0.1rem;
+  // transition: border 300ms ease-in-out;
+
+  // @media screen and (max-width: 970px) {
+    // padding: 0.25rem 0.75rem;
+  // }
 }
 
 .navbar-brand svg.navbar-brand__tertiary-logo {
@@ -145,6 +152,10 @@ a.navbar-item,
   padding: 0.5rem 0 0.325rem;
   text-transform: uppercase;
 
+  // @media screen and (max-width: $tablet) {
+  //   font-size: 1rem;
+  // }
+
   // @media screen and (min-width: 1090px) {
   //   margin-right: 0.2rem;
   // }
@@ -174,6 +185,7 @@ a.navbar-item,
 }
 
 .navbar-menu.is-active {
+  // box-shadow: 0 8px 16px rgba(10,10,10,.1);
   transform: translateZ(0);
 
   @media screen and (max-width: $navbar-breakpoint) {
