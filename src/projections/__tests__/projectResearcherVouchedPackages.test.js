@@ -23,19 +23,19 @@ describe('projectResearcherVouchedPackages', () => {
       [
         {
           id: ethers.utils.bigNumberify(0),
-          vouchTotals: { 
+          vouchTotals: {
             '0xabcd': ethers.utils.bigNumberify(500)
           }
         },
         {
           id: ethers.utils.bigNumberify(1),
-          vouchTotals: { 
+          vouchTotals: {
             '0xabcd': ethers.utils.bigNumberify(2250)
           }
         },
         {
           id: ethers.utils.bigNumberify(2),
-          vouchTotals: { 
+          vouchTotals: {
             '0xabcd': ethers.utils.bigNumberify(2200)
           }
         }
@@ -56,7 +56,7 @@ describe('projectResearcherVouchedPackages', () => {
           id: ethers.utils.bigNumberify(0),
           vouchTotals: {
             '0xabcd': ethers.utils.bigNumberify(1000)
-          } 
+          }
         }
       }
     })

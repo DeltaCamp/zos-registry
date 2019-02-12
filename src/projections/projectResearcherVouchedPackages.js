@@ -9,7 +9,6 @@ export function projectResearcherVouchedPackages (address, events) {
   const result = {
     packages: {}
   }
-  
 
   for (let i in events) {
     // use extraTopics to filter events based on user's eth address!
