@@ -3,6 +3,7 @@ import { tokenQueries } from '~/queries/tokenQueries'
 import { vouchingQueries } from '~/queries/vouchingQueries'
 import { web3Queries } from '~/queries/web3Queries'
 import { abiMapping } from '~/apollo/abiMapping'
+import * as queries from './queries'
 
 export function subscribeAndRefetch (apolloClient) {
   // If the user signs in to MetaMask or logs out, we should ... (refresh the page?)
@@ -87,21 +88,16 @@ export function subscribeAndRefetch (apolloClient) {
         }
       }
     `
-  }).subscribe((data, error) => {
+  }).subscribe(({data, loading, error}) => {
     if (error) {
       console.error(error)
       return
+    } else if (loading) {
+      return
     }
 
-    const accountResult = apolloClient.readQuery({ query: web3Queries.accountQuery })
-
-    if (accountResult && accountResult.account) {
-      apolloClient.query({
-        query: tokenQueries.tokenQuery,
-        variables: { address: accountResult.account },
-        fetchPolicy: 'network-only'
-      })
-    }
+    queries.refetchQueriesByName(apolloClient, ['tokenQuery'])
+    queries.refetchQueriesByName(apolloClient, ['allowanceQuery'])
   })
 
   apolloClient.subscribe({
@@ -118,17 +114,6 @@ export function subscribeAndRefetch (apolloClient) {
       return
     }
 
-    const accountResult = apolloClient.readQuery({ query: web3Queries.networkAccountQuery })
-
-    if (accountResult && accountResult.account && accountResult.networkId) {
-      apolloClient.query({
-        query: tokenQueries.allowanceQuery,
-        variables: {
-          address: accountResult.account,
-          spender: abiMapping.getAddress('Vouching', accountResult.networkId)
-        },
-        fetchPolicy: 'network-only'
-      })
-    }
+    queries.refetchQueriesByName(apolloClient, ['allowanceQuery', 'tokenQuery'])
   })
 }
