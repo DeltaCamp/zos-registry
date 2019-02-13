@@ -36,7 +36,7 @@ export const challengeRowQuery = gql`
 export const ChallengeRow = class extends Component {
   state = {
     challengeDetailsActive: false,
-    challengeRowHovered: false 
+    challengeRowHovered: false
   }
 
   displayPriority = (amount) => {
@@ -107,7 +107,7 @@ export const ChallengeRow = class extends Component {
               >
                 {children}
               </button>
-            ) 
+            )
           }
 
           return (
@@ -121,7 +121,7 @@ export const ChallengeRow = class extends Component {
                     'is-active': this.state.challengeDetailsActive
                   }
                 )
-              }>
+                }>
                 <span className='list--cell desc'>
                   <ListCellButton>
                     <ShortText text={title} />
