@@ -9,6 +9,7 @@ import { CSSTransition } from 'react-transition-group'
 import { CodeSnippet } from '~/components/CodeSnippet'
 import { ResearcherLink } from '~/components/ResearcherLink'
 import { GitHubLink } from '~/components/GitHubLink'
+import { ShortText } from '~/components/ShortText'
 import { vouchingFragments } from '~/queries/vouchingQueries'
 import { displayWeiToEther } from '~/utils/displayWeiToEther'
 import { challengeStatus } from '~/utils/challengeStatus'
@@ -72,6 +73,7 @@ export const ChallengeRow = class extends Component {
     const { challenged } = this.props
     const challengeId = challenged.parsedLog.values.challengeID
     const amount = ethers.utils.bigNumberify(challenged.parsedLog.values.amount.toString())
+
     const { metadataURI } = challenged.parsedLog.values
 
     const priority = this.displayPriority(amount)
@@ -148,9 +150,13 @@ export const ChallengeRow = class extends Component {
                 </span>
                 <span className='list--cell more'>
                   <ListCellButton
-                    extraClassNames='has-text-centered list--accordion-icon'
+                    extraClassNames='has-text-centered list--accordion-icon is-monospaced has-text-grey is-uppercase'
                   >
-                    <AntdIcon
+                    <span className={classnames(
+                      {
+                        'has-text-link': this.state.challengeRowHovered
+                      }
+                    )}> { this.state.challengeDetailsActive ? 'Close' : 'Open' }</span> <AntdIcon
                       type={this.state.challengeDetailsActive ? MinusCircleOutline : PlusCircleOutline}
                       className='antd-icon'
                     />
