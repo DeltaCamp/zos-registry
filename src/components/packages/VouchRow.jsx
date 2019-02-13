@@ -32,6 +32,7 @@ export const VouchRow = graphql(web3Queries.accountQuery)(class _VouchRow extend
           <ResearcherLink
             address={this.props.address}
             className={classnames(
+              'has-hover-border',
               'has-text-grey',
               {
                 'has-text-primary': isUser

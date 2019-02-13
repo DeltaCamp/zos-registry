@@ -49,8 +49,8 @@ export class PackageDetails extends Component {
 
     return (
       <>
-        <div className='columns reverse-column-order'>
-          <div className='column is-7-tablet is-8-desktop'>
+        <div className='row reverse-column-order'>
+          <div className='col-xs-12 col-md-7'>
             <h1 className='title is-size-1 has-text-weight-normal'>
               {metadata.name}
 
@@ -66,10 +66,9 @@ export class PackageDetails extends Component {
             <p className='is-size-6 package-item--description'>
               {metadata.description}
             </p>
-
           </div>
 
-          <div className='column is-5-tablet is-4-desktop has-text-right--desktop'>
+          <div className='col-xs-12 col-start-md-8 col-md-5 has-text-right--desktop'>
             <div className='package-item--image'>
               <GithubProfileImage user={owner} />
             </div>
@@ -80,8 +79,8 @@ export class PackageDetails extends Component {
           </div>
         </div>
 
-        <div className='columns'>
-          <div className='column'>
+        <div className='row'>
+          <div className='col-xs-12'>
             <h5 className='is-size-5'>
               Link this package:
             </h5>
@@ -96,8 +95,10 @@ export class PackageDetails extends Component {
           </div>
         </div>
 
-        <div className='columns'>
-          <div className='column'>
+        <br />
+
+        <div className='row'>
+          <div className='col-xs-12'>
             <div className={classnames(
               'message',
               'message-endorse',
@@ -175,8 +176,8 @@ export class PackageDetails extends Component {
 
         {yn(process.env.REACT_APP_NEXT_RELEASE_FEATURE_FLAG) && (
 
-          <div className='columns'>
-            <div className='column is-10-tablet'>
+          <div className='row'>
+            <div className='col-xs-12'>
               <Query query={vouchingQueries.vouchQuery} variables={{ id: id.toString() }}>
                 {({ data }) => {
                   const { Vouching } = data || {}
@@ -222,23 +223,24 @@ export class PackageDetails extends Component {
         <br />
 
         {yn(process.env.REACT_APP_NEXT_RELEASE_FEATURE_FLAG) && (
-          <div className='columns'>
-            <div className='column is-12-tablet'>
+          <div className='row'>
+            <div className='col-xs-12'>
               <h5 className='is-size-5 has-text-weight-semibold'>
                 Challenges
               </h5>
 
               {!noChallenges &&
-                <div>
+                <>
                   Create a challenge by running: &nbsp;
                   <br className='is-hidden-desktop' />
                   <br className='is-hidden-desktop' />
                   <CodeSnippet metadata={metadata} action='challenge' />
                   <br className='is-hidden-desktop' />
                   <br className='is-hidden-desktop' />
-                </div>
+                </>
               }
 
+              <br />
               <br />
 
               <ul className='list'>
