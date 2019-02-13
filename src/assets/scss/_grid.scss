@@ -1,5 +1,3 @@
-$grid_gutter: $gap;
-
 // Grid array (used for generating the grid)
 $grid_arr: (
   (xs, 0px), 
@@ -12,7 +10,7 @@ $grid_arr: (
 .row {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-gap: $grid_gutter;
+  grid-gap: $gridGap;
   width: 100%;
 }
 
@@ -35,25 +33,18 @@ $grid_arr: (
     }
 
     .container {
-      width: calc(#{$breakpoint} - #{$grid_gutter});
+      width: calc(#{$breakpoint} - #{$gridGap});
     }
 
-    // hack while Bulma columns/grid system still in place:
+    // hack to override Bulma columns & grid system
+    // remove bulma's grid / responsive / columns completely!
     .navbar > .container {
-      width: calc(#{$breakpoint} - #{$grid_gutter});
+      width: calc(#{$breakpoint} - #{$gridGap});
 
       @media (min-width: 0px) and (max-width: $tablet) {
-        // width: 100%;
-        width: 90%;
+        width: $mobileContainerWidth;
       }
     }
-
-    // .navbar > .container > .row {
-    //   @media (min-width: 0px) and (max-width: $mobile) {
-    //     padding-left: 5%;
-    //     padding-right: 5%;
-    //   }
-    // }
   }
 }
 
@@ -61,17 +52,13 @@ $grid_arr: (
   margin: 0 auto;
 
   @media (max-width: $tablet) {
-    width: 90%;
+    width: $mobileContainerWidth;
   }
 }
 
 .row {
   @media (max-width: $tablet) {
-    grid-row-gap: $grid_gutter / 2;
+    grid-row-gap: $gridGap / 2;
     grid-column-gap: 0;
-    // margin-left: $grid_gutter / 2;
-    // margin-right: $grid_gutter / 2;
-    // grid-column-gap: 0;
-
   }
 }
