@@ -37,31 +37,8 @@ const App = class _App extends PureComponent {
     })
   }
 
-  async componentDidMount () {
+  componentDidMount () {
     const uri = 'https://api.intercom.io/users'
-
-    var postData = async (url = ``, data = {}) => {
-      // Default options are marked with *
-      const res = await fetch(url, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${process.env.REACT_APP_INTERCOM_API_KEY}`,
-          "Accept": `application/json`
-        },
-        body: JSON.stringify(data)
-      })
-        // .then(async (response) => {
-        //   console.log('hello')
-        //   console.log('body', response.body)
-        //   const j = await response.json()
-        //   return j
-        // })
-      console.log(res)
-
-      return res
-    }
 
     const body = {
       // "email": "wash@serenity.io",
@@ -77,18 +54,42 @@ const App = class _App extends PureComponent {
         "last_order_at": 1475569818
       }
     }
+    console.log(`Bearer ${process.env.REACT_APP_INTERCOM_API_KEY}`)
 
-    postData(uri, body)
-      .then(data => {
-        console.log('fuck yeah')
-        console.log(JSON.stringify(data))
+    const headers = {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${process.env.REACT_APP_INTERCOM_API_KEY}`,
+      "Accept": `application/json`
+    }
+
+    fetch(uri, {
+      method: "POST",
+      mode: "no-cors",
+      // credentials: 'include',
+      headers,
+      // referrer: 'client',
+      body: JSON.stringify(body)
+    })
+      .then((response) => {
+        console.log('hello')
+        console.log('body', response.body)
+
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Could not reach the API: " + response.statusText);
+        }
+
+        // return response.json()
       })
-      .catch(error => {
-        console.log(error)
-        console.error('hi')
-        console.error(error)
-      });
-
+      .then(function (data) {
+        console.log('data', data)
+        // document.getElementById("encoded").innerHTML = data.encoded;
+      })
+      .catch((error) => {
+        console.warn(error)
+        return error
+      })
 
     // const options = {
     //   method: 'POST',
