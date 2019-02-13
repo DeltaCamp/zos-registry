@@ -73,6 +73,7 @@ export const ChallengeRow = class extends Component {
 
     const priority = this.displayPriority(amount)
 
+    /* eslint-disable camelcase */
     return (
       <Query query={challengeRowQuery} variables={{ uri: metadataURI, challengeId }}>
         {({ data, loading, error }) => {
@@ -87,7 +88,6 @@ export const ChallengeRow = class extends Component {
 
           const { metadata } = data || {}
           const { title, html_url } = metadata
-
           const hasAnswer = parseInt(challenge.answeredAt, 10) > 0
           const hasAppeal = parseInt(appeal.createdAt, 10) > 0
 
@@ -238,6 +238,7 @@ export const ChallengeRow = class extends Component {
               </CSSTransition>
             </>
           )
+          /* eslint-enable camelcase */
         }}
       </Query>
     )
