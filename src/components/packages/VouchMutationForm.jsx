@@ -286,7 +286,8 @@ export const VouchMutationForm = graphql(Web3Mutations.sendTransaction, { name: 
 
           if (token && token.ZepToken) {
             allowance = token.ZepToken.allowance
-          } else {
+          }
+          if (!allowance) {
             allowance = ethers.utils.bigNumberify(0)
           }
           return allowance

@@ -1356,22 +1356,22 @@ apollo-link-dedup@^1.0.0:
   dependencies:
     apollo-link "^1.2.6"
 
-apollo-link-ethereum-resolver-ethersjs@^0.0.22:
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/apollo-link-ethereum-resolver-ethersjs/-/apollo-link-ethereum-resolver-ethersjs-0.0.22.tgz#bbc3a4b6415f04adf5e6abb8a86b27ab672fbc0a"
-  integrity sha512-7gzsKNYre7yRbTtim6c1Fs5G8982bumS7VlwZxF3X2V2MFio9PvElPAKYgKOHmbmaLBlEbyUbpYr/EsjI2rwKQ==
+apollo-link-ethereum-resolver-ethersjs@^0.0.23:
+  version "0.0.23"
+  resolved "https://registry.yarnpkg.com/apollo-link-ethereum-resolver-ethersjs/-/apollo-link-ethereum-resolver-ethersjs-0.0.23.tgz#b81a6977f668745eea3414e8f61dea0731f529bb"
+  integrity sha512-1T4pdpOfJcPRe6Eqj2ZZ9rh+ExNIkFZ0T5B5BE5qmWjneYjVbRpO33xrmFF85wbbX1zOZ6FQ6SAGYoKwi8IxLA==
   dependencies:
     apollo-link "^1.2.6"
-    apollo-link-ethereum "^0.0.22"
+    apollo-link-ethereum "^0.0.23"
     apollo-utilities "^1.1.2"
     ethers "^4.0.23"
     graphql "^14.1.1"
     graphql-anywhere "^4.1.27"
 
-apollo-link-ethereum@^0.0.22:
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/apollo-link-ethereum/-/apollo-link-ethereum-0.0.22.tgz#a9727021d60632d39a644bf899c2410920203a19"
-  integrity sha512-mHO35Sww2+9AZf/pRwniLgL2RgRBu66amS9Hu8utPJn/qjRI6zg+MFjWmZiLDlawyc8XJUhyAJwyNVRrYiFWBA==
+apollo-link-ethereum@^0.0.23:
+  version "0.0.23"
+  resolved "https://registry.yarnpkg.com/apollo-link-ethereum/-/apollo-link-ethereum-0.0.23.tgz#6bcfa0c13639a447a3b94a4917e951b71285f222"
+  integrity sha512-mNjRbSiF1+KDALTzR+HwqidV6grAv773ePub/d/N+jp5SZC8cwpvKXnd2V9VM8g2XXBkD+RtwBhSRoagXgDjcA==
   dependencies:
     apollo-link "^1.2.6"
     apollo-utilities "^1.0.27"
@@ -10638,6 +10638,11 @@ thunky@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-1.0.3.tgz#f5df732453407b09191dae73e2a8cc73f381a826"
   integrity sha512-YwT8pjmNcAXBZqrubu22P4FYsh2D4dxRmnWBOL8Jk8bUcRUtc5326kx32tuTmFDAZtLOGEVNl8POAR8j896Iow==
+
+timekeeper@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/timekeeper/-/timekeeper-2.1.2.tgz#0fd98dd839551f2ab6b92b283754ea5a24edc901"
+  integrity sha512-fc1DDqbiyz5vxRO4xkiATwfWUw1FV7W20+FJYal1SnoIYgNuB4WNxYLtbG3zjUBwOSk3P4u1TgBAZYG/aqBWMw==
 
 timers-browserify@^2.0.4:
   version "2.0.10"
