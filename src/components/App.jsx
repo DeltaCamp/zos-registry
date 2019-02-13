@@ -38,102 +38,22 @@ const App = class _App extends PureComponent {
   }
 
   componentDidMount () {
-    const uri = 'https://api.intercom.io/users'
-
-    const body = {
-      // "email": "wash@serenity.io",
-      "name": "Hoban Dude",
-      "phone": "555671243",
+    window.Intercom('update', {
+      "user_id": "25",
+      "owner_id": "234768",
+      "email": "wash@serenity.io",
+      "name": "Hoban asdf",
+      "phone": "5555555555",
       "signed_up_at": 1392731331,
-      "last_seen_ip": "1.2.3.4",
+      "last_seen_ip" : "1.2.3.4",
       "last_seen_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9",
-      "custom_attributes": {
-        "paid_subscriber": true,
-        "monthly_spend": 155.5,
-        "team_mates": 9,
-        "last_order_at": 1475569818
-      }
-    }
-    console.log(`Bearer ${process.env.REACT_APP_INTERCOM_API_KEY}`)
 
-    const headers = {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.REACT_APP_INTERCOM_API_KEY}`,
-      "Accept": `application/json`
-    }
-
-    fetch(uri, {
-      method: "POST",
-      mode: "no-cors",
-      // credentials: 'include',
-      headers,
-      // referrer: 'client',
-      body: JSON.stringify(body)
+      // Notice that custom attributes can just be thrown in here
+      "paid_subscriber" : true,
+      "monthly_spend": 155.5,
+      "team_mates": 9,
+      "last_order_at":1475569818
     })
-      .then((response) => {
-        console.log('hello')
-        console.log('body', response.body)
-
-        if (response.ok) {
-          return response.json();
-        } else {
-          throw new Error("Could not reach the API: " + response.statusText);
-        }
-
-        // return response.json()
-      })
-      .then(function (data) {
-        console.log('data', data)
-        // document.getElementById("encoded").innerHTML = data.encoded;
-      })
-      .catch((error) => {
-        console.warn(error)
-        return error
-      })
-
-    // const options = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Authorization': `Bearer <${process.env.REACT_APP_INTERCOM_API_KEY}>`,
-    //     'Accept': `application/json`,
-    //     'Content-Type': `application/json`
-    //   },
-    //   body: JSON.stringify({
-        
-    //   })
-    // }
-    // console.log(options)
-
-    // const test = await fetch(uri, options)
-    // console.log(test)
-
-    // .then(async (response) => {
-    //   const json = await response.json()
-    //   // json.__typename = 'Metadata'
-    //   // json.id = uri
-    //   console.log('json', json)
-    //   // return json
-    //   return response
-    // }).catch(error => {
-    //   console.log(error)
-    //   return {
-    //     error,
-    //     __typename: 'Metadata'
-    //   }
-    // })
-
-    // var client = new Intercom.Client({ token: '' });
-
-    // const c = await client.users.create({
-    //   email: 'jayne@serenity.io',
-    //   custom_attributes: {
-    //     foo: 'bar'
-    //   }
-    // })
-    // console.log(c)
-    // HTMLDivElement.
-      
-      // < script type = "text/javascript" async = "" src = "" ></script >
   }
 
   render () {
