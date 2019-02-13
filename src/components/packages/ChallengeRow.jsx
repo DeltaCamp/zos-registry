@@ -22,7 +22,7 @@ export const challengeRowQuery = gql`
       id
       title
       body
-      html_url
+      htmlUrl: html_url
       url
     }
     Vouching @contract(type: "Challenge", id: $challengeId) {
@@ -73,7 +73,6 @@ export const ChallengeRow = class extends Component {
 
     const priority = this.displayPriority(amount)
 
-    /* eslint-disable camelcase */
     return (
       <Query query={challengeRowQuery} variables={{ uri: metadataURI, challengeId }}>
         {({ data, loading, error }) => {
@@ -87,7 +86,7 @@ export const ChallengeRow = class extends Component {
           const priorityColor = constants.CHALLENGE_PRIORITY_COLORS[priority]
 
           const { metadata } = data || {}
-          const { title, html_url } = metadata
+          const { title, htmlUrl } = metadata
           const hasAnswer = parseInt(challenge.answeredAt, 10) > 0
           const hasAppeal = parseInt(appeal.createdAt, 10) > 0
 
@@ -144,7 +143,7 @@ export const ChallengeRow = class extends Component {
                 </span>
                 <span className='list--cell github'>
                   <GitHubLink
-                    url={html_url}
+                    url={htmlUrl}
                     cssClassNames='list__wrapping-anchor list__has-padding no-scale'
                   />
                 </span>
@@ -227,7 +226,7 @@ export const ChallengeRow = class extends Component {
 
                     <span className='accordion--footer'>
                       <GitHubLink
-                        url={html_url}
+                        url={htmlUrl}
                         viewLink
                         cssClassNames='is-text'
                       />
@@ -238,7 +237,6 @@ export const ChallengeRow = class extends Component {
               </CSSTransition>
             </>
           )
-          /* eslint-enable camelcase */
         }}
       </Query>
     )
