@@ -38,11 +38,11 @@
   grid-template-columns: 80px 1fr 150px 130px;
   grid-template-areas: 'id title total more';
 
-  @media screen and (max-width: $tablet) {
-    grid-template-columns: minmax(80px, max-content) 97px 1fr 1fr;
-    grid-template-rows: 1fr 40px;
-    grid-template-areas: 'title title title total'
-                         '.     .     .     more';
+  @media screen and (max-width: $tablet - 1px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 97px;
+    grid-template-areas: 'title title'
+                         'more  more';
   }
 }
 
