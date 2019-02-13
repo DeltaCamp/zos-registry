@@ -25,7 +25,7 @@ export const FourOhFour = class _FourOhFour extends PureComponent {
                 >
                   {'<'} Back to Home
                 </Link>
-                
+
                 <br />
                 <br />
 

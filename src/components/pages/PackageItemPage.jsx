@@ -17,7 +17,7 @@ export class PackageItemPage extends PureComponent {
     match: PropTypes.object.isRequired
   }
 
-  render() {
+  render () {
     return (
       <div className='is-positioned-absolutely'>
         <Helmet

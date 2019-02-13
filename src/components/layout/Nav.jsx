@@ -65,36 +65,36 @@ export const Nav = class _Nav extends Component {
                 { 'is-active': this.state.mobileNavActive }
               )}>
                 <div className='navbar-end'>
-                    <a
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      href='https://docs.zeppelinos.org/'
-                      className='navbar-item'
-                    >
+                  <a
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    href='https://docs.zeppelinos.org/'
+                    className='navbar-item'
+                  >
                       Docs
                   </a>
 
-                    <a
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      href='https://github.com/zeppelinos'
-                      className='navbar-item'
-                    >
+                  <a
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    href='https://github.com/zeppelinos'
+                    className='navbar-item'
+                  >
                       GitHub
                   </a>
 
-                    <a
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      href='https://zeppelinos.org/'
-                      className='navbar-item'
-                    >
+                  <a
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    href='https://zeppelinos.org/'
+                    className='navbar-item'
+                  >
                       Site
                   </a>
                 </div>
               </div>
             </div>
-            
+
           </div>
         </nav>
       </>

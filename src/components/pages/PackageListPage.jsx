@@ -72,7 +72,7 @@ export class PackageListPage extends PureComponent {
         <section className='section section--main-content'>
           <div className='container'>
             <div className='row'>
-             {/* is-10-tablet is-10-desktop is-8-widescreen is-offset-2-widescreen is-8-fullhd is-offset-2-fullhd */}
+              {/* is-10-tablet is-10-desktop is-8-widescreen is-offset-2-widescreen is-8-fullhd is-offset-2-fullhd */}
               <div className='col-xs-12'>
                 <Query query={web3Queries.networkIdQuery}>
                   {({ data }) => {
