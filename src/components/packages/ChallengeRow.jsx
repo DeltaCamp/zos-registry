@@ -10,7 +10,6 @@ import { CSSTransition } from 'react-transition-group'
 import { CodeSnippet } from '~/components/CodeSnippet'
 import { ResearcherLink } from '~/components/ResearcherLink'
 import { GitHubLink } from '~/components/GitHubLink'
-import { ShortText } from '~/components/ShortText'
 import { vouchingFragments } from '~/queries/vouchingQueries'
 import { displayWeiToEther } from '~/utils/displayWeiToEther'
 import { challengeStatus } from '~/utils/challengeStatus'
@@ -31,7 +30,10 @@ export const challengeRowQuery = gql`
 `
 
 export const ChallengeRow = class extends Component {
-  state = { challengeDetailsActive: false }
+  state = {
+    challengeDetailsActive: false,
+    challengeRowHovered: false 
+  }
 
   displayPriority = (amount) => {
     const packageAmount = displayWeiToEther(this.props.packageTotalVouched)
@@ -48,18 +50,19 @@ export const ChallengeRow = class extends Component {
   }
 
   handleChallengeRowMouseOver = (e) => {
-    e.preventDefault()
     this.setState({ challengeRowHovered: true })
   }
 
-  handleChallengeRowMouseOut = (e) => {
-    e.preventDefault()
+  handleChallengeRowMouseLeave = (e) => {
     this.setState({ challengeRowHovered: false })
   }
 
   handleChallengeRowClick = (e) => {
-    e.preventDefault()
-    this.setState({ challengeDetailsActive: !this.state.challengeDetailsActive })
+    // also settings the *RowHovered to the same state as *DetailsActive fixes a touch / mobile bug
+    this.setState({
+      challengeDetailsActive: !this.state.challengeDetailsActive,
+      challengeRowHovered: !this.state.challengeDetailsActive
+    })
   }
 
   render () {
@@ -88,75 +91,68 @@ export const ChallengeRow = class extends Component {
           const hasAnswer = parseInt(challenge.answeredAt, 10) > 0
           const hasAppeal = parseInt(appeal.createdAt, 10) > 0
 
+          const defaultButtonClasses = 'list__wrapping-anchor list__has-padding no-scale'
+
+          const ListCellButton = ({ children, extraClassNames }) => {
+            return (
+              <button
+                onMouseEnter={this.handleChallengeRowMouseOver}
+                onMouseLeave={this.handleChallengeRowMouseLeave}
+                onClick={this.handleChallengeRowClick}
+                className={`${defaultButtonClasses} ${extraClassNames}`}
+              >
+                {children}
+              </button>
+            ) 
+          }
+
           return (
             <>
-              <li className={classnames(
-                'list--row',
-                'list--row_challenge',
-                {
-                  'list--row__hovered': this.state.challengeRowHovered,
-                  'is-active': this.state.challengeDetailsActive
-                }
-              )}>
+              <li
+                className={classnames(
+                  'list--row',
+                  'list--row_challenge',
+                  {
+                    'list--row__hovered': this.state.challengeRowHovered,
+                    'is-active': this.state.challengeDetailsActive
+                  }
+                )
+              }>
                 <span className='list--cell desc'>
-                  <button
-                    onMouseOver={this.handleChallengeRowMouseOver}
-                    onMouseOut={this.handleChallengeRowMouseOut}
-                    onClick={this.handleChallengeRowClick}
-                    className='list__wrapping-anchor list__has-padding no-scale'
-                  >
-                    {/* TODO: this is completely incorrect, it should be the challenge description */}
-                    <ShortText text={metadata.description} />
-                  </button>
+                  <ListCellButton>
+                    {description}
+                  </ListCellButton>
                 </span>
                 <span className={`list--cell status has-text-${statusLabel.colour}`}>
-                  <button
-                    onMouseOver={this.handleChallengeRowMouseOver}
-                    onMouseOut={this.handleChallengeRowMouseOut}
-                    onClick={this.handleChallengeRowClick}
-                    className='list__wrapping-anchor list__has-padding no-scale'
-                  >
+                  <ListCellButton>
                     {statusLabel.label}
-                  </button>
+                  </ListCellButton>
                 </span>
                 <span className={`list--cell severity has-text-${priorityColor}`}>
-                  <button
-                    onMouseOver={this.handleChallengeRowMouseOver}
-                    onMouseOut={this.handleChallengeRowMouseOut}
-                    onClick={this.handleChallengeRowClick}
-                    className='list__wrapping-anchor list__has-padding no-scale'
-                  >
+                  <ListCellButton>
                     {priority}
-                  </button>
+                  </ListCellButton>
                 </span>
                 <span className='list--cell bounty'>
-                  <button
-                    onMouseOver={this.handleChallengeRowMouseOver}
-                    onMouseOut={this.handleChallengeRowMouseOut}
-                    onClick={this.handleChallengeRowClick}
-                    className='list__wrapping-anchor list__has-padding no-scale'
-                  >
+                  <ListCellButton>
                     {displayWeiToEther(amount)} Z
-                  </button>
+                  </ListCellButton>
                 </span>
                 <span className='list--cell github'>
                   <GitHubLink
                     url={`https://github.com/${repo}`}
-                    cssClassNames='list__wrapping-anchor list__has-padding no-scale'
+                    cssClassNames={defaultButtonClasses}
                   />
                 </span>
                 <span className='list--cell more'>
-                  <button
-                    onMouseOver={this.handleChallengeRowMouseOver}
-                    onMouseOut={this.handleChallengeRowMouseOut}
-                    onClick={this.handleChallengeRowClick}
-                    className='list__wrapping-anchor list__has-padding no-scale has-text-centered list--accordion-icon'
+                  <ListCellButton
+                    extraClassNames='has-text-centered list--accordion-icon'
                   >
                     <AntdIcon
                       type={this.state.challengeDetailsActive ? MinusCircleOutline : PlusCircleOutline}
                       className='antd-icon'
                     />
-                  </button>
+                  </ListCellButton>
                 </span>
               </li>
               <CSSTransition
