@@ -39,7 +39,7 @@ export const ChallengeRow = class extends Component {
     challengeRowHovered: false
   }
 
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     this.rowElementRef = React.createRef()
