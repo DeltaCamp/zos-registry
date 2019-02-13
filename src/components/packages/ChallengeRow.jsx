@@ -39,6 +39,12 @@ export const ChallengeRow = class extends Component {
     challengeRowHovered: false
   }
 
+  constructor(props) {
+    super(props)
+
+    this.rowElementRef = React.createRef()
+  }
+
   displayPriority = (amount) => {
     const packageAmount = displayWeiToEther(this.props.packageTotalVouched)
     const challengeAmount = displayWeiToEther(amount)
@@ -66,6 +72,10 @@ export const ChallengeRow = class extends Component {
     this.setState({
       challengeDetailsActive: !this.state.challengeDetailsActive,
       challengeRowHovered: !this.state.challengeDetailsActive
+    }, () => {
+      if (window && this.state.challengeDetailsActive) {
+        this.rowElementRef.current.scrollIntoView()
+      }
     })
   }
 
@@ -113,6 +123,7 @@ export const ChallengeRow = class extends Component {
           return (
             <>
               <li
+                ref={this.rowElementRef}
                 className={classnames(
                   'list--row',
                   'list--row_challenge',
