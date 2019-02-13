@@ -1,3 +1,86 @@
+.form {
+  padding: 3.5rem 0 8rem;
+
+  @media (max-width: 800px) {
+    margin: 0.25rem;
+    padding: 0.5rem 0.5rem 8rem;
+  }
+}
+
+.field:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+label,
+.label {
+  cursor: pointer;
+  font-family: $code-family;
+  // font-size: 1.25rem;
+  // letter-spacing: 1px;
+}
+
+.label:not(:last-child) {
+  margin-bottom: 0.25rem;
+}
+
+input.input,
+textarea.textarea {
+  border-radius: 3px;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  height: 50px;
+  padding: 5px 15px 3px;
+  border-bottom: 3px solid #ddd;
+  box-shadow: none;
+  transition: border-color 200ms ease-in-out;
+}
+
+textarea.textarea {
+  height: auto;
+}
+
+input.input:hover,
+input.input:active,
+input.input:focus,
+textarea.textarea:hover,
+textarea.textarea:focus,
+textarea.textarea:active {
+  border-bottom: 3px solid $link-color;
+}
+
+input.input:active,
+input.input:focus,
+textarea.textarea:focus,
+textarea.textarea:active {
+  border: 1px solid #aaa;
+  border-bottom: 3px solid $blue;
+}
+
+label.radio {
+  color: #c5c5c5;
+  font-weight: 700;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 20px;
+  min-width: 16rem;
+}
+
+input[type='radio'] {
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+  top: -2px;
+}
+
+.radio + .radio {
+  margin-left: 0;
+}
+
+.radio-label {
+  display: inline-block;
+  min-width: 10rem;
+  transition: color 200ms ease-in-out;
+}
 $addonsFormHeight: 57px;
 
 .is-addons-form-toggler-height {
@@ -46,7 +129,7 @@ $addonsFormHeight: 57px;
 }
 
 .input {
-  border: 0;
+  // border: 0;
   box-shadow: none;
   color: $grey;
   font-weight: 300;
@@ -75,7 +158,6 @@ $addonsFormHeight: 57px;
 .field.has-addons .button {
   color: $grey;
   font-weight: 900;
-  font-family: $code-family;
   height: 100%;
   margin: 0;
   padding: 1rem 1.5rem;
