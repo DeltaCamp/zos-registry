@@ -114,7 +114,7 @@
     border-bottom: 1px solid #ececec;
     grid-template: 'desc desc desc more'
       'status severity bounty github';
-    grid-template-columns: 1fr 93px 110px 120px;
+    grid-template-columns: 1fr 1fr 100px 120px;
     grid-template-rows: auto;
     margin-top: 3rem;
 
@@ -169,11 +169,16 @@
 
 .list--row_challenge .github .list__has-padding {
   @media screen and (max-width: $mobile) {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
+.list--row_challenge .github svg {
+  @media screen and (max-width: $mobile) {
+    margin-left: auto;
+  }
+}
 
 .list--row__head.list--row_challenge {
   @media screen and (max-width: $mobile) {
