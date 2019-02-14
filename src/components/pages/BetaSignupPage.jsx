@@ -13,17 +13,22 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
   constructor (props) {
     super(props)
     this.state = {
-      projectName: '',
-      companyName: '',
       email: '',
-      budget: '',
-      hearAboutUs: '',
-      comments: ''
+      name: '',
+      projectName: '',
+      githubUsername: '',
+      country: '',
+      participate: '',
+      participateOther: '',
+      questions: '',
+      hearAbout: '',
+      additionalInfo: ''
     }
   }
 
-  submit = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault()
+    
     this.setState({
       emailError: false
     })
@@ -35,27 +40,31 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
       return
     }
 
-    const url = 'https://script.google.com/macros/s/AKfycby1cKI5HlVcwx8uR0XB4w68SULY2v5dVSbI2lj4BQKBA1HudJ8/exec'
+    // const url = 'https://script.google.com/macros/s/AKfycby1cKI5HlVcwx8uR0XB4w68SULY2v5dVSbI2lj4BQKBA1HudJ8/exec'
+    console.log(this.state)
 
     this.setState({ isLoading: true })
+    this.setState({ emailSent: true })
+    // this.setState({ wasError: 'There was an error' })
 
-    fetch(`${url}?${JSON.stringify(this.state)}`)
-      .then(() => {
-        this.setState({
-          emailSent: true
-        })
-      })
-      .catch((error) => {
-        console.error(error)
-        this.setState({
-          wasError: error
-        })
-      })
+
+    // fetch(`${url}?${JSON.stringify(this.state)}`)
+    //   .then(() => {
+    //     this.setState({
+    //       emailSent: true
+    //     })
+    //   })
+    //   .catch((error) => {
+    //     console.error(error)
+    //     this.setState({
+    //       wasError: error
+    //     })
+    //   })
   }
 
-  handleBudgetChanged = (e) => {
+  handleParticipateChanged = (e) => {
     this.setState({
-      budget: e.currentTarget.value
+      participate: e.currentTarget.value
     })
   }
 
@@ -64,7 +73,8 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
 
     if (this.state.wasError) {
       error =
-        <section className='hero is-small is-danger has-text-centered first'>
+        <section className='hero is-medium is-dark has-text-centered first'>
+          <ScrollToTop />
           <div className='hero-body'>
             <h1 className='title'>
               An Error Occurred
@@ -78,27 +88,28 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
 
     if (this.state.emailSent) {
       content =
-        <section className='hero is-medium is-primary has-text-centered'>
+        <div className='hero is-dark is-medium has-text-centered'>
+          <ScrollToTop />
           <div className='hero-body'>
-            <h1 className='title'>
+            <h1 className='is-size-1 is-monospaced is-uppercase'>
               Thank you!
             </h1>
-            <h2 className='subtitle'>
+            <h3 className='is-size-3'>
               We'll be in contact shortly.
-            </h2>
+            </h3>
           </div>
-        </section>
+        </div>
     } else {
       content =
-        <form onSubmit={this.submit} className='form'>
-
+        <form onSubmit={this.handleSubmit} className='form'>
           <div className='field'>
-            <label className='label' htmlFor='contact-email-input'>
+            <label className='label' htmlFor='email-input'>
               What is your email address? <span className='has-text-info'>*</span>
             </label>
             <div className='control'>
               <input
-                id='contact-email-input'
+                autoFocus
+                id='email-input'
                 className='input'
                 type='text'
                 name='email'
@@ -108,35 +119,42 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
               />
             </div>
 
-            {this.state.emailError ? (
-              <label className='hint has-text-danger is-attention-grabby'>
-                Please enter an email address which we can reach you at
-              </label>
-            ) : null}
+            {this.state.emailError && (
+              <>
+                <ScrollToTop />
+                <label className='hint has-text-danger is-attention-grabby'>
+                  Please enter an email address which we can reach you at
+                </label>
+              </>
+            )}
           </div>
 
           <div className='field'>
-            <label className='label' htmlFor='contact-name-input'>
-              What is your name?
+            <label className='label' htmlFor='name-input'>
+              What is your name? <span className='has-text-info'>*</span>
             </label>
             <div className='control'>
-              <input id='contact-name-input' className='input' type='text' name='name'
-                value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })}
+              <input
+                id='name-input'
+                className='input'
+                type='text'
+                name='name'
+                value={this.state.name}
+                onChange={(e) => this.setState({ name: e.target.value })}
               />
             </div>
           </div>
 
           <div className='field'>
-            <label className='label' htmlFor='contact-project-name-input'>
-            What is your project or organization name?
+            <label className='label' htmlFor='project-name-input'>
+              What is your project or organization name? <span className='has-text-info'>*</span>
             </label>
             <div className='control'>
               <input
-                autoFocus
-                id='contact-project-name-input'
+                id='project-name-input'
                 className='input'
                 type='text'
-                name='companyProjectName'
+                name='projectName'
                 value={this.state.projectName}
                 onChange={(e) => this.setState({ projectName: e.target.value })}
               />
@@ -144,87 +162,140 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
           </div>
 
           <div className='field'>
-            <label className='label'>
-            What is your budget?
-            </label>
-
-            <div className='control'>
-              <label className='radio'>
-                <input
-                  type='radio'
-                  value='Less than $25,000'
-                  name='budget'
-                  onChange={this.handleBudgetChanged}
-                />
-                <span className='radio-label'>Less than $25,000</span>
-              </label>
-
-              <label className='radio'>
-                <input
-                  type='radio'
-                  value='$25,000 to $50,000'
-                  name='budget'
-                  onChange={this.handleBudgetChanged}
-                />
-                <span className='radio-label'>$25,000 to $50,000</span>
-              </label>
-
-              <label className='radio'>
-                <input
-                  type='radio'
-                  value='$50,000 to $100,000'
-                  name='budget'
-                  onChange={this.handleBudgetChanged}
-                />
-                <span className='radio-label'>$50,000 to $100,000</span>
-              </label>
-
-              <label className='radio'>
-                <input
-                  type='radio'
-                  value='$100,000 or more'
-                  name='budget'
-                  onChange={this.handleBudgetChanged}
-                />
-                <span className='radio-label'>$100,000 or more</span>
-              </label>
-
-              <label className='radio'>
-                <input
-                  type='radio'
-                  value='Currently uncertain'
-                  name='budget'
-                  onChange={this.handleBudgetChanged}
-                />
-                <span className='radio-label'>Currently uncertain</span>
-              </label>
-            </div>
-          </div>
-
-          <div className='field'>
-            <label className='label' htmlFor='contact-hearAboutUs-input'>
-            How did you hear about Delta Camp?
+            <label className='label' htmlFor='github-username-input'>
+              What is your GitHub username?
             </label>
             <div className='control'>
-              <input id='contact-hearAboutUs-input' className='input' type='text' name='hearAboutUs'
-                value={this.state.hearAboutUs} onChange={(e) => this.setState({ hearAboutUs: e.target.value })}
+              <input
+                id='github-username-input'
+                className='input'
+                type='text'
+                name='githubUsername'
+                value={this.state.githubUsername}
+                onChange={(e) => this.setState({ githubUsername: e.target.value })}
               />
             </div>
           </div>
 
           <div className='field'>
-            <label className='label' htmlFor='contact-comments-textarea'>
-            Additional Comment(s):
+            <label className='label'>
+              Which country do you live in? <span className='has-text-info'>*</span>
+            </label>
+
+            <div className='control'>
+              <select
+                id='country-input'
+                className='input'
+                name='country'
+                value={this.state.country}
+                onChange={(e) => this.setState({ country: e.target.value })}
+              >
+                <option>Hi</option>
+              </select>
+            </div>
+          </div>
+
+          <div className='field'>
+            <label className='label'>
+              How do you want to participate in the private beta? <span className='has-text-info'>*</span>
+            </label>
+
+            <div className='control'>
+              <label className='radio'>
+                <input
+                  type='radio'
+                  value='Developing and maintaining an EVM package'
+                  name='participate'
+                  onChange={this.handleParticipateChanged}
+                />
+                <span className='radio-label'>Developing and maintaining an EVM package</span>
+              </label>
+
+              <label className='radio'>
+                <input
+                  type='radio'
+                  value='Reviewing EVM packages code and vouching ZEP Tokens for them'
+                  name='participate'
+                  onChange={this.handleParticipateChanged}
+                />
+                <span className='radio-label'>Reviewing EVM packages code and vouching ZEP Tokens for them</span>
+              </label>
+
+              <label className='radio'>
+                <input
+                  type='radio'
+                  value='Developing my own project using EVM packages'
+                  name='participate'
+                  onChange={this.handleParticipateChanged}
+                />
+                <span className='radio-label'>Developing my own project using EVM packages</span>
+              </label>
+
+              <label className='radio'>
+                <input
+                  type='radio'
+                  value='Other'
+                  name='participate'
+                  onChange={this.handleParticipateChanged}
+                />
+                <span className='radio-label is-short'>Other:</span>
+              </label>
+              <input
+                id='participateOther-input'
+                className='input radio-label__other-input'
+                type='text'
+                name='participateOther'
+                value={this.state.participateOther}
+                onChange={(e) => this.setState({ participateOther: e.target.value })}
+              />
+            </div>
+          </div>
+
+          <div className='field'>
+            <label className='label' htmlFor='questions-input'>
+              What questions do you have about ZeppelinOS before joining the private beta?
+            </label>
+            <div className='control'>
+              <input
+                id='questions-input'
+                className='input'
+                type='text'
+                name='questions'
+                value={this.state.questions}
+                onChange={(e) => this.setState({ questions: e.target.value })}
+              />
+            </div>
+          </div>
+
+          <div className='field'>
+            <label className='label' htmlFor='hearAbout-input'>
+              How did you hear about ZeppelinOS?
+            </label>
+            <div className='control'>
+              <input
+                id='hearAbout-input'
+                className='input'
+                type='text'
+                name='hearAbout'
+                value={this.state.hearAbout}
+                onChange={(e) => this.setState({ hearAbout: e.target.value })}
+              />
+            </div>
+          </div>
+
+          <div className='field'>
+            <label className='label' htmlFor='additionalInfo-textarea'>
+              Is there anything else we should know about you?
             </label>
             <div className='control'>
               <textarea
-                id='contact-comments-textarea'
+                id='additionalInfo-textarea'
                 className='textarea'
                 type='text'
                 name='Name'
                 rows='5'
-                value={this.state.comments}
-                onChange={(e) => this.setState({ comments: e.target.value })}
+                value={this.state.additionalInfo}
+                onChange={(e) => this.setState({ additionalInfo: e.target.value })}
               />
             </div>
           </div>
@@ -268,6 +339,7 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
                   Sign up for the Zeppelin Registry Beta
                 </h2>
 
+                <br />
                 {error}
                 {content}
               </div>

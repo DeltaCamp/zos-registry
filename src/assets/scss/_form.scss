@@ -1,9 +1,11 @@
+$addonsFormHeight: 57px;
+
 .form {
   padding: 3.5rem 0 8rem;
 
   @media (max-width: 800px) {
-    margin: 0.25rem;
-    padding: 0.5rem 0.5rem 8rem;
+    // margin: 0.25rem;
+    // padding: 0.5rem 0.5rem 8rem;
   }
 }
 
@@ -15,12 +17,11 @@ label,
 .label {
   cursor: pointer;
   font-family: $code-family;
-  // font-size: 1.25rem;
-  // letter-spacing: 1px;
+  font-size: 1.125rem;
 }
 
 .label:not(:last-child) {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
 }
 
 input.input,
@@ -57,31 +58,46 @@ textarea.textarea:active {
 }
 
 label.radio {
-  color: #c5c5c5;
+  color: $grey;
+  display: flex;
+  align-items: center;
   font-weight: 700;
   margin-top: 5px;
-  margin-bottom: 5px;
-  margin-right: 20px;
-  min-width: 16rem;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  width: 90%;
+}
+
+.radio-label.is-short {
+  width: 200px;
+}
+
+.radio-label__other-input {
+  margin-left: 40px;
+  width: 80%;
 }
 
 input[type='radio'] {
   display: inline-block;
   margin-right: 10px;
-  position: relative;
-  top: -2px;
+  width: 20px;
+  height: 20px;
 }
 
+// Bulma override
+label.radio,
 .radio + .radio {
-  margin-left: 0;
+  margin-left: 10px;
 }
 
 .radio-label {
   display: inline-block;
-  min-width: 10rem;
+  clear: both;
+  font-family: $family-sans-serif;
+  font-size: 1rem;
+  width: 80%;
   transition: color 200ms ease-in-out;
 }
-$addonsFormHeight: 57px;
 
 .is-addons-form-toggler-height {
   height: $addonsFormHeight + 24px;
@@ -129,9 +145,8 @@ $addonsFormHeight: 57px;
 }
 
 .input {
-  // border: 0;
   box-shadow: none;
-  color: $grey;
+  color: $grey-darker;
   font-weight: 300;
 }
 
