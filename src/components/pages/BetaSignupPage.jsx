@@ -26,26 +26,38 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
     }
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault()
-    
-    this.setState({
-      emailError: false
-    })
 
-    if (this.state.email === '') {
-      this.setState({
-        emailError: true
-      })
-      return
-    }
-
-    // const url = 'https://script.google.com/macros/s/AKfycby1cKI5HlVcwx8uR0XB4w68SULY2v5dVSbI2lj4BQKBA1HudJ8/exec'
-    console.log(this.state)
+    const requiredFields = ['email', 'name', 'projectName', 'country', 'participate']
 
     this.setState({ isLoading: true })
-    this.setState({ emailSent: true })
-    // this.setState({ wasError: 'There was an error' })
+
+    await requiredFields.forEach(field => {
+      this.setState({
+        [`${field}Error`]: false
+      })
+    })
+    
+    await requiredFields.forEach(field => {
+      if (this.state[field] === '') {
+        this.setState({
+          [`${field}Error`]: true
+        })
+        return
+      }
+    })
+
+    console.log(this.state)
+    
+    // await requiredFields.forEach(field => {
+    //   if (this.state[`${field}Error`]) {
+    //     this.setState({ wasError: 'There was an error' })
+    //   }
+    // })
+
+
+    // this.setState({ emailSent: true })
 
 
     // fetch(`${url}?${JSON.stringify(this.state)}`)
@@ -122,7 +134,7 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
             {this.state.emailError && (
               <>
                 <ScrollToTop />
-                <label className='hint has-text-danger is-attention-grabby'>
+                <label className='hint has-text-danger'>
                   Please enter an email address which we can reach you at
                 </label>
               </>
@@ -143,6 +155,15 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
                 onChange={(e) => this.setState({ name: e.target.value })}
               />
             </div>
+
+            {this.state.nameError && (
+              <>
+                <ScrollToTop />
+                <label className='hint has-text-danger'>
+                  Please enter your name
+                  </label>
+              </>
+            )}
           </div>
 
           <div className='field'>
@@ -159,6 +180,15 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
                 onChange={(e) => this.setState({ projectName: e.target.value })}
               />
             </div>
+
+            {this.state.projectNameError && (
+              <>
+                <ScrollToTop />
+                <label className='hint has-text-danger'>
+                  Please enter your project or company name
+                </label>
+              </>
+            )}
           </div>
 
           <div className='field'>
@@ -193,6 +223,15 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
                 <option>Hi</option>
               </select>
             </div>
+
+            {this.state.countryError && (
+              <>
+                <ScrollToTop />
+                <label className='hint has-text-danger'>
+                  Please choose a country
+                </label>
+              </>
+            )}
           </div>
 
           <div className='field'>
@@ -249,6 +288,15 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
                 onChange={(e) => this.setState({ participateOther: e.target.value })}
               />
             </div>
+
+
+            {this.state.participateError && (
+              <>
+                <label className='hint has-text-danger'>
+                  Please select your level of participation
+                </label>
+              </>
+            )}
           </div>
 
           <div className='field'>
