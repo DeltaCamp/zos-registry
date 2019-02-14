@@ -29,8 +29,8 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
     }
   }
 
-  selectCountry(val) {
-    this.setState({ country: val });
+  selectCountry (val) {
+    this.setState({ country: val })
   }
 
   handleSubmit = async (e) => {
@@ -46,7 +46,7 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
         [`${field}Error`]: false
       })
     })
-    
+
     requiredFields.forEach(field => {
       if (this.state[field] === '') {
         this.setState({
@@ -58,26 +58,25 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
 
     if (hasError) {
       this.setState({ isLoading: false })
-      return
     } else {
       try {
         window.Intercom('update', {
-          "email": this.state.email,
-          "name": this.state.name,
+          'email': this.state.email,
+          'name': this.state.name,
           // "phone": "5555555555",
           // "signed_up_at": 1392731331,
           // "last_seen_ip": "1.2.3.4",
           // "last_seen_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9",
 
           // Notice that custom attributes can just be thrown in here
-          "Project Name": this.state.projectName,
-          "GitHub Username": this.state.githubUsername,
-          "Country": this.state.country,
-          "Questions": this.state.questions,
-          "Heard About Us": this.state.hearAbout,
-          "Participate": this.state.participate,
-          "Participate Other": this.state.participateOther,
-          "Additional Info": this.state.additionalInfo
+          'Project Name': this.state.projectName,
+          'GitHub Username': this.state.githubUsername,
+          'Country': this.state.country,
+          'Questions': this.state.questions,
+          'Heard About Us': this.state.hearAbout,
+          'Participate': this.state.participate,
+          'Participate Other': this.state.participateOther,
+          'Additional Info': this.state.additionalInfo
         })
 
         this.setState({ loggedInIntercom: true })
@@ -88,8 +87,7 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
         this.setState({ isLoading: false })
       }
     }
-  }    
-
+  }
 
   handleParticipateChanged = (e) => {
     this.setState({
@@ -167,7 +165,7 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
               <ScrollToTop />
               <label className='hint has-text-danger'>
                 Please enter your name
-                </label>
+              </label>
             </>
           )}
         </div>
@@ -293,7 +291,6 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
             />
           </div>
 
-
           {this.state.participateError && (
             <>
               <label className='hint has-text-danger'>
@@ -363,7 +360,7 @@ export const BetaSignupPage = class _BetaSignupPage extends PureComponent {
           </div>
         </div>
       </form>
-  
+
     return (
       <div className='is-positioned-absolutely'>
         <Helmet
