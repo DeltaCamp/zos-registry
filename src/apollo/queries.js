@@ -1,4 +1,3 @@
-import { ApolloClient } from 'apollo-client'
 import { compact, flatten, map, values } from 'lodash'
 
 // Taken from https://github.com/apollographql/apollo-client/issues/3540#issuecomment-410911223

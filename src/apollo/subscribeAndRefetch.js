@@ -1,8 +1,6 @@
 import gql from 'graphql-tag'
-import { tokenQueries } from '~/queries/tokenQueries'
 import { vouchingQueries } from '~/queries/vouchingQueries'
 import { web3Queries } from '~/queries/web3Queries'
-import { abiMapping } from '~/apollo/abiMapping'
 import * as queries from './queries'
 
 export function subscribeAndRefetch (apolloClient) {
