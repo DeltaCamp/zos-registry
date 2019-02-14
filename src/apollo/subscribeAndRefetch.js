@@ -86,7 +86,7 @@ export function subscribeAndRefetch (apolloClient) {
         }
       }
     `
-  }).subscribe(({data, loading, error}) => {
+  }).subscribe(({ data, loading, error }) => {
     if (error) {
       console.error(error)
       return
