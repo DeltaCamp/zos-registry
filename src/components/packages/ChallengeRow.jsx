@@ -76,8 +76,8 @@ export const ChallengeRow = ReactTimeout(class extends Component {
     }, () => {
       if (window && this.state.challengeDetailsActive) {
         this.props.setTimeout(
-          () => { this.rowElementRef.current.scrollIntoView({ behavior: "smooth"}) }
-        , 500)
+          () => { this.rowElementRef.current.scrollIntoView({ behavior: 'smooth' }) }
+          , 500)
       }
     })
   }

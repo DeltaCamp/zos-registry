@@ -211,8 +211,7 @@ export class PackageDetails extends Component {
                             <span className='list--cell list--cell__head'>
                               Vouched
                             </span>
-                            <span className='list--cell list--cell__head'>
-                            </span>
+                            <span className='list--cell list--cell__head' />
                           </li>
                           {vouches.map(vouch => {
                             return <VouchRow
