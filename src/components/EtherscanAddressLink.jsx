@@ -15,7 +15,7 @@ export function EtherscanAddressLink ({ address, children, className }) {
           <>
             <ReactTooltip type='info' effect='solid' />
             <a
-              data-tip="View on Etherscan"
+              data-tip='View on Etherscan'
               href={url}
               className={className}
               target='_blank'

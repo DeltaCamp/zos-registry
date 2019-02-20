@@ -32,7 +32,7 @@ export const CodeBox = ReactTimeout(class _CodeBox extends PureComponent {
 
         <span className='has-text-right is-inline-block is-copy-button'>
           <div ref='copyTooltip' data-tip='Copied!' />
-          
+
           <ReactTooltip type='light' effect='solid' />
 
           <CopyToClipboard
