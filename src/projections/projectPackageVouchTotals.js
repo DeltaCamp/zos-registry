@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
 import { normalizeAddr } from '~/utils/normalizeAddr'
 
-function emptyPackage() {
+function emptyPackage () {
   return {
     vouchTotals: {},
     vouchTotal: ethers.utils.bigNumberify(0),

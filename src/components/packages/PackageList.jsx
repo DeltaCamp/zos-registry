@@ -26,7 +26,6 @@ export const PackageList = graphql(vouchingQueries.allEventsQuery)(withApollo(cl
         <PackageListItemLoader key='package-item-fragment-2' />
       </>
     } else {
-
       const events = (Vouching ? Vouching.allEvents : []) || []
       const packageVouchTotals = projectPackageVouchTotals(events || [])
       const packageIds = Object.keys(packageVouchTotals.packages)
