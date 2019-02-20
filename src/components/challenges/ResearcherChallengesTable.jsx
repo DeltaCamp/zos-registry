@@ -39,7 +39,7 @@ export class ResearcherChallengesTable extends PureComponent {
                   <li className='list--row list--row__blank-state'>
                     <span className='list--cell list--cell__blank-state'>
                       This reseacher has yet to challenge a package.
-                      </span>
+                    </span>
                   </li>
                 ) : (
                   challengeEvents.map(challenged =>
@@ -58,7 +58,7 @@ export class ResearcherChallengesTable extends PureComponent {
               <div className='col-xs-12'>
                 <h5 className='is-size-5 has-text-weight-semibold'>
                   Challenges
-                  </h5>
+                </h5>
                 <br />
 
                 <ul className='list'>
