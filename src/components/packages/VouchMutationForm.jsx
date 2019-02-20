@@ -7,6 +7,7 @@ import { Web3Mutations } from '~/mutations/Web3Mutations'
 import { tokenFragments } from '~/queries/tokenQueries'
 import { web3Queries } from '~/queries/web3Queries'
 import { toWei } from '~/utils/toWei'
+import { bigNumberify } from '~/utils/bigNumberify'
 import { displayWeiToEther } from '~/utils/displayWeiToEther'
 import ZepTokenLogo from '~/assets/images/zep-token-logo--fixed.svg'
 import { abiMapping } from '~/apollo/abiMapping'
@@ -56,10 +57,10 @@ export const VouchMutationForm = graphql(Web3Mutations.sendTransaction, { name: 
           let inputAmount = ''
           if (vouchTx && !vouchTx.completed) {
             lastTransactionId = vouchTx.id
-            inputAmount = vouchTx.args.values[1].toString()
+            inputAmount = ethers.utils.formatEther(vouchTx.args.values[1].toString())
           } else if (approveTx && !approveTx.completed) {
             lastTransactionId = approveTx.id
-            inputAmount = approveTx.args.values[1].toString()
+            inputAmount = ethers.utils.formatEther(approveTx.args.values[1].toString())
           }
 
           this.state = {
@@ -69,13 +70,11 @@ export const VouchMutationForm = graphql(Web3Mutations.sendTransaction, { name: 
         }
 
         handleAmountChange = (e) => {
-          let amount = e.target.value.replace(new RegExp(/^-?![0-9]+/))
-          amount = toWei(amount)
+          let inputAmount = e.target.value.replace(new RegExp(/^-?![0-9]+/))
 
           this.setState({
-            amount,
             amountError: false,
-            inputAmount: e.target.value
+            inputAmount
           })
         }
 
@@ -246,7 +245,7 @@ export const VouchMutationForm = graphql(Web3Mutations.sendTransaction, { name: 
             this.resetForm()
           } else if (this.notEnoughAllowance()) {
             this.approveTransaction()
-          } else if (this.approveTxCompleted() || this.state.amount) {
+          } else if (this.approveTxCompleted() || this.state.inputAmount) {
             this.vouchTransaction()
           } else {
             this.setState({ amountError: true })
@@ -280,7 +279,7 @@ export const VouchMutationForm = graphql(Web3Mutations.sendTransaction, { name: 
             method: 'vouch',
             args: [
               this.props.packageId,
-              this.state.amount
+              toWei(this.state.inputAmount)
             ]
           }
 
@@ -300,15 +299,15 @@ export const VouchMutationForm = graphql(Web3Mutations.sendTransaction, { name: 
           let notEnoughZepError = false
           if (token && token.ZepToken) {
             notEnoughZepError =
-              parseInt(this.state.amount, 10) > parseInt(token.ZepToken.myBalance)
+              toWei(this.state.inputAmount).gt(bigNumberify(token.ZepToken.myBalance))
           }
           return notEnoughZepError
         }
 
         vouchAmount () {
-          let vouchAmount = ethers.utils.bigNumberify(0)
-          if (this.state.amount) {
-            vouchAmount = ethers.utils.bigNumberify(this.state.amount)
+          let vouchAmount = bigNumberify(0)
+          if (this.state.inputAmount) {
+            vouchAmount = toWei(this.state.inputAmount)
           }
           return vouchAmount
         }
@@ -322,7 +321,7 @@ export const VouchMutationForm = graphql(Web3Mutations.sendTransaction, { name: 
             allowance = token.ZepToken.allowance
           }
           if (!allowance) {
-            allowance = ethers.utils.bigNumberify(0)
+            allowance = bigNumberify(0)
           }
           return allowance
         }

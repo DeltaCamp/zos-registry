@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 import { vouchingQueries } from '~/queries/vouchingQueries'
 import { web3Queries } from '~/queries/web3Queries'
-import * as queries from './queries'
+import * as queries from 'apollo-refetch-queries'
 
 export function subscribeAndRefetch (apolloClient) {
   // If the user signs in to MetaMask or logs out, we should ... (refresh the page?)
