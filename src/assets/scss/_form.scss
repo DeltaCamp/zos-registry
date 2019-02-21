@@ -46,7 +46,7 @@ input.input:focus,
 textarea.textarea:hover,
 textarea.textarea:focus,
 textarea.textarea:active {
-  border-bottom: 3px solid $link-color;
+  border-bottom: 3px solid lighten($link-color, 40%);
 }
 
 input.input:active,
@@ -54,7 +54,7 @@ input.input:focus,
 textarea.textarea:focus,
 textarea.textarea:active {
   border: 1px solid #aaa;
-  border-bottom: 3px solid $blue;
+  border-bottom: 3px solid $link;
 }
 
 label.radio {
@@ -120,7 +120,7 @@ label.radio,
 }
 
 .tx-in-progress .field.has-addons {
-  border-color: $blue;
+  border-color: $link;
 }
 
 .form:not(.tx-in-progress) .field.has-addons:hover path,
