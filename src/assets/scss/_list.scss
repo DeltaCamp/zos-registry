@@ -110,9 +110,6 @@
   @media screen and (max-width: $mobile) {
     border-top: 1px solid #ececec;
     border-bottom: 1px solid #ececec;
-    // grid-template: 'desc desc desc more'
-    //   'status severity bounty github';
-    // grid-template-columns: 1fr 1fr 100px 120px;
 
     grid-template: 'desc desc more more' 'status severity bounty github';
     grid-template-columns: 3fr 1fr 1.5fr 1fr;
@@ -173,13 +170,6 @@
 .list--row_challenge .more {
   @media screen and (max-width: $mobile) {
     grid-area: more;
-  }
-}
-
-.list--row_challenge .github .list__has-padding {
-  @media screen and (max-width: $mobile) {
-    // padding-left: 1.5rem;
-    // padding-right: 1.5rem;
   }
 }
 
