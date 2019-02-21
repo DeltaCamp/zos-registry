@@ -88,7 +88,7 @@ export const ChallengeRow = ReactTimeout(class extends Component {
           this.rowElementRef.current.scrollIntoView({ behavior: 'smooth' })
         }
       }
-    , 500)
+      , 500)
   }
 
   handleChallengeRowClick = (e) => {
@@ -210,7 +210,7 @@ export const ChallengeRow = ReactTimeout(class extends Component {
                         Challenged <span className='has-text-weight-semibold'>{dateRelative(challenge.createdAt)}</span>
                         {/* TODO: Could be nice to have a unique challengeId Challenge #{challenge.entryID.toString()} */}
                       </h5>
-                      <h6 ref={this.challengeDetailsRef}  className='is-size-6 has-text-weight-semibold'>
+                      <h6 ref={this.challengeDetailsRef} className='is-size-6 has-text-weight-semibold'>
                         Challenger <ResearcherLink address={challenge.challenger.toString()} shorten />
                       </h6>
                     </span>
