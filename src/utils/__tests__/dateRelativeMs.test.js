@@ -5,11 +5,14 @@ const FROZEN_TIME = new Date(1549997377543)
 
 describe('dateRelativeMs', () => {
   it('should return the relative date', () => {
-    tk.freeze(FROZEN_TIME)
     var beforeFrozenTimeMs = 1549997174543
     var frozenTime = new Date(beforeFrozenTimeMs)
+
+    tk.freeze(FROZEN_TIME)
+
     expect(dateRelativeMs(beforeFrozenTimeMs, FROZEN_TIME)).toEqual(expect.stringMatching(/today at \d{1,2}:46 (AM|PM)/))
     expect(dateRelativeMs(frozenTime, FROZEN_TIME)).toEqual(expect.stringMatching(/today at \d{1,2}:46 (AM|PM)/))
+
     tk.reset()
   })
 
