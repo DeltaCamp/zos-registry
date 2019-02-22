@@ -10,7 +10,7 @@ function emptyPackage () {
 }
 
 /**
- * Calculates the total vouched amounts for all packages passed in by 
+ * Calculates the total vouched amounts for all packages passed in by
  * Ethereum log events. This is done by comparing 'Registered', 'Vouched'
  * and 'Unvouched' events and summing up the totals.
  *
