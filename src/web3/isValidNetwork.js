@@ -1,6 +1,6 @@
 import { allowedNetworkIds } from '~/web3/allowedNetworkIds'
 
-export function isValidNetwork(networkId, nullResponse = false) {
+export function isValidNetwork (networkId, nullResponse = false) {
   if (!networkId) {
     return nullResponse
   }
